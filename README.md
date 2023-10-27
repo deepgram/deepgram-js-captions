@@ -69,7 +69,7 @@ const transcriptionData = [
       word: string;
       start: number;
       end: number;
-      punctuated_word: string;
+      punctuated_word: string; // optional
     }
   ]
 ]
