@@ -37,9 +37,7 @@ This package has been built to convert any transcription format. You only need t
 A generic converter would look like this:
 
 ```ts
-import { chunkArray } from "../lib/helpers";
-import { WordBase } from "../lib/types";
-import { IConverter } from "./IConverter";
+import { chunkArray, WordBase, IConverter } from "@deepgram/captions";
 
 export class GenericConverter implements IConverter {
   constructor(public transcriptionData: any) {}
