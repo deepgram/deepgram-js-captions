@@ -1,10 +1,30 @@
-# Repo Name
+# Deepgram Captions
 
-A repository template for open-source demos, guides and sample apps. Description here.
+This package is the Node implementation of Deepgram's WebVTT and SRT formatting. Given a transcription, this package can return a valid string to store as WebVTT or SRT caption files.
 
-## Getting an API Key
+## Installation
 
-🔑 To access the Deepgram API you will need a [free Deepgram API Key](https://console.deepgram.com/signup?jump=keys).
+```bash
+npm install @deepgram/captions
+# - or -
+# yarn add @deepgram/captions
+```
+
+## WebVTT from Deepgram Transcriptions
+
+```ts
+import { webvtt } from "@deepgram/captions";
+
+const result = webvtt(deepgram_transcription_result);
+```
+
+## SRT from Deepgram Transcriptions
+
+```ts
+import { srt } from "@deepgram/captions";
+
+const result = srt(deepgram_transcription_result);
+```
 
 ## Documentation
 
