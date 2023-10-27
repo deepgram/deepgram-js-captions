@@ -85,6 +85,87 @@ import { srt } from "@deepgram/captions";
 const result = srt(new GenericConverter(transcription_result));
 ```
 
+## Output WebVTT
+
+When transcribing https://dpgr.am/spacewalk.wav, and running it through our library, this is the WebVTT output.
+
+```text
+WEBVTT
+
+NOTE
+Transcription provided by Deepgram
+Request Id: 686278aa-d315-4aeb-b2a9-713615544366
+Created: 2023-10-27T15:35:56.637Z
+Duration: 25.933313
+Channels: 1
+
+00:00:00.080 --> 00:00:03.220
+Yeah. As as much as, it's worth celebrating,
+
+00:00:04.400 --> 00:00:05.779
+the first, spacewalk,
+
+00:00:06.319 --> 00:00:07.859
+with an all female team,
+
+00:00:08.475 --> 00:00:10.715
+I think many of us are looking forward
+
+00:00:10.715 --> 00:00:13.215
+to it just being normal and
+
+00:00:13.835 --> 00:00:16.480
+I think if it signifies anything, It is
+
+00:00:16.779 --> 00:00:18.700
+to honor the the women who came before
+
+00:00:18.700 --> 00:00:21.680
+us who, were skilled and qualified,
+
+00:00:22.300 --> 00:00:24.779
+and didn't get the same opportunities that we
+
+00:00:24.779 --> 00:00:25.439
+have today.
+```
+
+## Output SRT
+
+When transcribing https://dpgr.am/spacewalk.wav, and running it through our library, this is the SRT output.
+
+```text
+00:00:00,080 --> 00:00:03,220
+Yeah. As as much as, it's worth celebrating,
+
+00:00:04,400 --> 00:00:05,779
+the first, spacewalk,
+
+00:00:06,319 --> 00:00:07,859
+with an all female team,
+
+00:00:08,475 --> 00:00:10,715
+I think many of us are looking forward
+
+00:00:10,715 --> 00:00:13,215
+to it just being normal and
+
+00:00:13,835 --> 00:00:16,480
+I think if it signifies anything, It is
+
+00:00:16,779 --> 00:00:18,700
+to honor the the women who came before
+
+00:00:18,700 --> 00:00:21,680
+us who, were skilled and qualified,
+
+00:00:22,300 --> 00:00:24,779
+and didn't get the same opportunities that we
+
+00:00:24,779 --> 00:00:25,439
+have today.
+```
+
 ## Documentation
 
 You can learn more about the Deepgram API at [developers.deepgram.com](https://developers.deepgram.com/docs).
