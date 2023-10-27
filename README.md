@@ -2,6 +2,8 @@
 
 This package is the Node implementation of Deepgram's WebVTT and SRT formatting. Given a transcription, this package can return a valid string to store as WebVTT or SRT caption files.
 
+> Works with ANY transcription format.
+
 ## Installation
 
 ```bash
@@ -24,6 +26,63 @@ const result = webvtt(deepgram_transcription_result);
 import { srt } from "@deepgram/captions";
 
 const result = srt(deepgram_transcription_result);
+```
+
+## Converters
+
+This package has been built to convert any transcription format. You only need to provide a `converter` class to provide the formatters with the correct data.
+
+### Example Converter
+
+A generic converter would look like this:
+
+```ts
+import { chunkArray } from "../lib/helpers";
+import { WordBase } from "../lib/types";
+import { IConverter } from "./IConverter";
+
+export class GenericConverter implements IConverter {
+  constructor(public transcriptionData: any) {}
+
+  getLines(lineLength: number = 8): WordBase[][] {
+    const results = this.transcriptionData;
+    let content: WordBase[][] = [];
+
+    results.paragraphs.forEach((paragraph) => {
+      if (paragraph.words.length > lineLength) {
+        content.push(...chunkArray(paragraph.words, lineLength));
+      } else {
+        content.push(paragraph.words);
+      }
+    });
+
+    return content;
+  }
+}
+```
+
+It requires that `getLines` return the following data structure:
+
+```ts
+// const transcriptionData: WordBase[][] = [
+const transcriptionData = [
+  [
+    {
+      word: string;
+      start: number;
+      end: number;
+      punctuated_word: string;
+    }
+  ]
+]
+```
+
+Using your converter will look like this:
+
+```ts
+import { srt } from "@deepgram/captions";
+
+const result = srt(new GenericConverter(transcription_result));
 ```
 
 ## Documentation
