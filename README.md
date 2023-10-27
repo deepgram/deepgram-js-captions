@@ -135,35 +135,37 @@ have today.
 When transcribing https://dpgr.am/spacewalk.wav, and running it through our library, this is the SRT output.
 
 ```text
+1
 00:00:00,080 --> 00:00:03,220
 Yeah. As as much as, it's worth celebrating,
 
-00:00:04,400 --> 00:00:05,779
-the first, spacewalk,
+2
+00:00:04,400 --> 00:00:07,859
+the first, spacewalk, with an all female team,
 
-00:00:06,319 --> 00:00:07,859
-with an all female team,
-
+3
 00:00:08,475 --> 00:00:10,715
 I think many of us are looking forward
 
-00:00:10,715 --> 00:00:13,215
-to it just being normal and
+4
+00:00:10,715 --> 00:00:14,235
+to it just being normal and I think
 
-00:00:13,835 --> 00:00:16,480
-I think if it signifies anything, It is
+5
+00:00:14,235 --> 00:00:17,340
+if it signifies anything, It is to honor
 
-00:00:16,779 --> 00:00:18,700
-to honor the the women who came before
+6
+00:00:17,340 --> 00:00:19,820
+the the women who came before us who,
 
-00:00:18,700 --> 00:00:21,680
-us who, were skilled and qualified,
+7
+00:00:20,140 --> 00:00:23,580
+were skilled and qualified, and didn't get the
 
-00:00:22,300 --> 00:00:24,779
-and didn't get the same opportunities that we
-
-00:00:24,779 --> 00:00:25,439
-have today.
+8
+00:00:23,580 --> 00:00:25,439
+same opportunities that we have today.
 ```
 
 ## Documentation
