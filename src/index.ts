@@ -20,8 +20,8 @@ const webvtt = (transcription: any, lineLength: number = 8): string => {
   output.push("");
 
   // get converter specific headers
-  output.push(data.getHeaders().join("\n"));
-  output.push("");
+  data.getHeaders ? output.push(data.getHeaders().join("\n")) : null;
+  data.getHeaders ? output.push("") : null;
 
   // get the lines
   const lines = data.getLines(lineLength);
