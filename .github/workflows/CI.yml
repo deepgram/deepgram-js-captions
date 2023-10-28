@@ -1,0 +1,55 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - main
+      - next
+      - rc
+      - beta
+      - alpha
+    paths-ignore:
+      - "docs/**"
+      - "**/*.md"
+      - ".prettierrc"
+      - "**/*ignore"
+  push:
+    branches:
+      - main
+      - next
+      - rc
+      - beta
+      - alpha
+    paths-ignore:
+      - "docs/**"
+      - "**/*.md"
+      - ".prettierrc"
+      - "**/*ignore"
+
+jobs:
+  test:
+    name: Test / OS ${{ matrix.os }} / Node ${{ matrix.node }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node: ["18"]
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Run tests
+        run: |
+          npm clean-install
+          npm run test:coverage
+
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v3
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
