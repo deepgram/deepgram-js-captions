@@ -83,9 +83,29 @@ import { srt } from "@deepgram/captions";
 const result = srt(new GenericConverter(transcription_result));
 ```
 
+### Included Converters
+
+#### Assembly AI
+
+```ts
+import { webvtt, AssemblyAiConverter } from "@deepgram/captions";
+
+const result = webvtt(new AssemblyAiConverter(assembly_result));
+```
+
 ## Output WebVTT
 
 When transcribing https://dpgr.am/spacewalk.wav, and running it through our library, this is the WebVTT output.
+
+```ts
+import { webvtt } from "@deepgram/captions";
+
+const result = webvtt(deepgram_transcription_result);
+
+console.log(result);
+```
+
+This is the result:
 
 ```text
 WEBVTT
@@ -131,6 +151,16 @@ have today.
 ## Output SRT
 
 When transcribing https://dpgr.am/spacewalk.wav, and running it through our library, this is the SRT output.
+
+```ts
+import { srt } from "@deepgram/captions";
+
+const result = srt(deepgram_transcription_result);
+
+console.log(result);
+```
+
+This is the result:
 
 ```text
 1

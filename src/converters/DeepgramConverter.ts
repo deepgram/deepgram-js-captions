@@ -41,6 +41,7 @@ export class DeepgramConverter implements IConverter {
     this.transcriptionData.metadata?.channels
       ? output.push(`Channels: ${this.transcriptionData.metadata?.channels}`)
       : null;
+
     return output;
   }
 }
