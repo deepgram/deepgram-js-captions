@@ -1,6 +1,6 @@
 # Deepgram Captions
 
-This package is the Node implementation of Deepgram's WebVTT and SRT formatting. Given a transcription, this package can return a valid string to store as WebVTT or SRT caption files.
+This package is the JavaScript implementation of Deepgram's WebVTT and SRT formatting. Given a transcription, this package can return a valid string to store as WebVTT or SRT caption files.
 
 > Works with ANY transcription format.
 
