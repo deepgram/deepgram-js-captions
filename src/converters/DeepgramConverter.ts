@@ -18,7 +18,31 @@ export class DeepgramConverter implements IConverter {
         }
       });
     } else {
-      content.push(...chunkArray(results.channels[0].alternatives[0].words, lineLength));
+      const words = results.channels[0].alternatives[0].words;
+      const diarize = "speaker" in words[0]; // was diarization used
+
+      let buffer: WordBase[] = [];
+      let currentSpeaker = 0;
+
+      words.forEach((word) => {
+        if (diarize && word.speaker !== currentSpeaker) {
+          content.push(buffer);
+          buffer = [];
+        }
+
+        if (buffer.length === lineLength) {
+          content.push(buffer);
+          buffer = [];
+        }
+
+        if (diarize) {
+          currentSpeaker = word.speaker ?? 0;
+        }
+
+        buffer.push(word);
+      });
+
+      content.push(buffer);
     }
 
     return content;
