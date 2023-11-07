@@ -1,5 +1,7 @@
 # Deepgram Captions
 
+ [![Discord](https://dcbadge.vercel.app/api/server/xWRaCDBtW4?style=flat)](https://discord.gg/xWRaCDBtW4) [![npm version](https://badge.fury.io/js/@deepgram%2Fcaptions.svg)](https://badge.fury.io/js/@deepgram%2Fcaptions)
+
 This package is the JavaScript implementation of Deepgram's WebVTT and SRT formatting. Given a transcription, this package can return a valid string to store as WebVTT or SRT caption files.
 
 > Works with ANY transcription format.
