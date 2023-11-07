@@ -130,7 +130,7 @@ export interface WordBase {
   word: string;
   start: number;
   end: number;
-  confidence: number;
+  confidence?: number;
   punctuated_word?: string;
   speaker?: number;
   speaker_confidence?: number;

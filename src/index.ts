@@ -1,5 +1,5 @@
 import { DeepgramConverter, IConverter, isConverter } from "./converters";
-import { secondsToTimestamp } from "./lib/helpers";
+import { chunkArray, secondsToTimestamp } from "./lib/helpers";
 import { DeepgramResponse } from "./lib/types";
 
 const parseInput = (transcription: any): IConverter => {
@@ -26,12 +26,19 @@ const webvtt = (transcription: any, lineLength: number = 8): string => {
   // get the lines
   const lines = data.getLines(lineLength);
 
+  // is speaker output required?
+  const speakerLabels = "speaker" in lines[0][0];
+
   lines.forEach((words) => {
     const firstWord = words[0];
     const lastWord = words[words.length - 1];
 
     output.push(`${secondsToTimestamp(firstWord.start)} --> ${secondsToTimestamp(lastWord.end)}`);
-    output.push(words.map((word) => word.punctuated_word ?? word.word).join(" "));
+
+    const line = words.map((word) => word.punctuated_word ?? word.word).join(" ");
+    const speakerLabel = speakerLabels ? `<v Speaker ${firstWord.speaker}>` : "";
+
+    output.push(`${speakerLabel}${line}`);
     output.push("");
   });
 
@@ -41,9 +48,16 @@ const webvtt = (transcription: any, lineLength: number = 8): string => {
 const srt = (transcription: any, lineLength: number = 8): string => {
   const output: string[] = [];
 
+  const data = parseInput(transcription);
+
   // get the lines
-  const lines = parseInput(transcription).getLines(lineLength);
+  let lines = data.getLines(lineLength);
+
+  // is speaker output required?
+  const speakerLabels = "speaker" in lines[0][0];
+
   let entry = 1;
+  let currentSpeaker: any;
 
   lines.forEach((words) => {
     output.push((entry++).toString());
@@ -57,8 +71,17 @@ const srt = (transcription: any, lineLength: number = 8): string => {
         "HH:mm:ss,SSS"
       )}`
     );
-    output.push(words.map((word) => word.punctuated_word ?? word.word).join(" "));
+
+    const line = words.map((word) => word.punctuated_word ?? word.word).join(" ");
+    const speakerLabel =
+      speakerLabels && currentSpeaker !== firstWord.speaker
+        ? `[Speaker ${firstWord.speaker}]\n`
+        : "";
+
+    output.push(`${speakerLabel}${line}`);
     output.push("");
+
+    currentSpeaker = firstWord.speaker;
   });
 
   return output.join("\n");
